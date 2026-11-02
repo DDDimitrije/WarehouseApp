@@ -1,12 +1,33 @@
-using System.Drawing.Drawing2D;
-
 namespace WinFormsApp1
 {
-    public partial class Splash : Form
+    public partial class Splash : MovableResizableForm
     {
         public Splash()
         {
             InitializeComponent();
+            MinimumSize = new Size(700, 350);
+            progressBar1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Resize += (_, _) => LayoutSplash();
+            LayoutSplash();
+            Theme.Apply(this);
+        }
+
+        private void LayoutSplash()
+        {
+            int contentHeight = label1.Height + 12 + pictureBox1.Height;
+            int contentTop = Math.Max(24, (ClientSize.Height - contentHeight) / 2 - 35);
+            label1.Location = new Point((ClientSize.Width - label1.Width) / 2, contentTop);
+            pictureBox1.Location = new Point(
+                (ClientSize.Width - pictureBox1.Width) / 2,
+                label1.Bottom + 12);
+
+            int horizontalMargin = Math.Max(32, ClientSize.Width / 20);
+            int verticalMargin = Math.Max(24, ClientSize.Height / 12);
+            progressBar1.SetBounds(
+                horizontalMargin,
+                ClientSize.Height - verticalMargin - progressBar1.Height,
+                Math.Max(100, ClientSize.Width - horizontalMargin * 2),
+                progressBar1.Height);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -42,29 +63,6 @@ namespace WinFormsApp1
         private void Splash_Load(object sender, EventArgs e)
         {
             timer1.Start();
-        }
-        private void UpdateRoundedCorners()
-        {
-            int radius = 25;
-
-            using (GraphicsPath path = new GraphicsPath())
-            {
-                path.StartFigure();
-
-                path.AddArc(0, 0, radius, radius, 180, 90);
-                path.AddArc(Width - radius, 0, radius, radius, 270, 90);
-                path.AddArc(Width - radius, Height - radius, radius, radius, 0, 90);
-                path.AddArc(0, Height - radius, radius, radius, 90, 90);
-
-                path.CloseFigure();
-
-                Region = new Region(path);
-            }
-        }
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            UpdateRoundedCorners();
         }
     }
 }

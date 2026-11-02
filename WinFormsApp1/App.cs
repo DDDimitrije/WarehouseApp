@@ -11,11 +11,26 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class App : Form
+    public partial class App : MovableResizableForm
     {
         public App()
         {
             InitializeComponent();
+            MinimumSize = new Size(1000, 550);
+            ConfigureBackButton(button5);
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label12.Dock = DockStyle.Fill;
+            label12.TextAlign = ContentAlignment.MiddleCenter;
+            MobileDGV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.SetBounds(0, panel1.Top, ClientSize.Width, panel1.Height);
+            MobileDGV.SetBounds(0, 360, ClientSize.Width, ClientSize.Height - 360);
+            CenterControlsHorizontally(1020,
+                label4, Mobidtb, label5, brandtb, label6, modeltb, label7, pricetb,
+                label8, stocktb, label9, ramcb, label10, romcb, label11, cameratb,
+                button1, button2, button3, button4);
+            CenterControlHorizontally(label1);
+            CenterControlHorizontally(label3);
+            Theme.Apply(this);
         }
 
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-B0M9AK9\SQLEXPRESS;Initial Catalog=MobiWarehouseDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
@@ -166,29 +181,5 @@ namespace WinFormsApp1
             home.Show();
             this.Hide();
         }
-        private void UpdateRoundedCorners()
-        {
-            int radius = 25;
-
-            using (GraphicsPath path = new GraphicsPath())
-            {
-                path.StartFigure();
-
-                path.AddArc(0, 0, radius, radius, 180, 90);
-                path.AddArc(Width - radius, 0, radius, radius, 270, 90);
-                path.AddArc(Width - radius, Height - radius, radius, radius, 0, 90);
-                path.AddArc(0, Height - radius, radius, radius, 90, 90);
-
-                path.CloseFigure();
-
-                Region = new Region(path);
-            }
-        }
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            UpdateRoundedCorners();
-        }
-
     }
 }

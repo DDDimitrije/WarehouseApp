@@ -78,7 +78,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LemonChiffon;
-            ClientSize = new Size(1068, 450);
+            ClientSize = new Size(1280, 720);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(progressBar1);

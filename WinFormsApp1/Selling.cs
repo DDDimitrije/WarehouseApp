@@ -10,11 +10,31 @@ using Microsoft.Data.SqlClient;
 
 namespace WinFormsApp1
 {
-    public partial class Selling : Form
+    public partial class Selling : MovableResizableForm
     {
         public Selling()
         {
             InitializeComponent();
+            MinimumSize = new Size(1032, 680);
+            ConfigureBackButton(button5);
+            MobileDGV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            AccessoryDGV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            BillDGV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            CenterControlsHorizontally(1034,
+                label4, label2, label3, label6, BillTb, ProductTb, PriceTb, QuantityTb,
+                label7, label8, button2, label9, button1, AmountLbl,
+                ClientNameTb, label10);
+            int layoutOffset = (ClientSize.Width - 1034) / 2;
+            BillDGV.Left += layoutOffset;
+            MobileDGV.Left += layoutOffset;
+            AccessoryDGV.Left += layoutOffset;
+            panel1.Left += layoutOffset;
+            CenterControlHorizontally(label1);
+            CenterControlHorizontally(label5);
+            AmountLbl.Anchor = AnchorStyles.Bottom;
+            button1.Anchor = AnchorStyles.Bottom;
+            Theme.Apply(this);
 
             RoundButton(button2, 15);
             RoundButton(button1, 15);
@@ -242,29 +262,5 @@ namespace WinFormsApp1
         {
             Application.Exit();
         }
-        private void UpdateRoundedCorners()
-        {
-            int radius = 25;
-
-            using (GraphicsPath path = new GraphicsPath())
-            {
-                path.StartFigure();
-
-                path.AddArc(0, 0, radius, radius, 180, 90);
-                path.AddArc(Width - radius, 0, radius, radius, 270, 90);
-                path.AddArc(Width - radius, Height - radius, radius, radius, 0, 90);
-                path.AddArc(0, Height - radius, radius, radius, 90, 90);
-
-                path.CloseFigure();
-
-                Region = new Region(path);
-            }
-        }
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            UpdateRoundedCorners();
-        }
-
     }
 }

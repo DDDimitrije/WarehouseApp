@@ -10,11 +10,25 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class Accessories : Form
+    public partial class Accessories : MovableResizableForm
     {
         public Accessories()
         {
             InitializeComponent();
+            MinimumSize = new Size(950, 550);
+            ConfigureBackButton(button5);
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label12.Dock = DockStyle.Fill;
+            label12.TextAlign = ContentAlignment.MiddleCenter;
+            AccessoryDGV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.SetBounds(0, panel1.Top, ClientSize.Width, panel1.Height);
+            AccessoryDGV.SetBounds(0, panel1.Bottom, ClientSize.Width, ClientSize.Height - panel1.Bottom);
+            CenterControlsHorizontally(967,
+                label4, AidTb, label5, AbrandTb, label6, AmodelTb, label7, ApriceTb,
+                label8, AstockTb, button1, button2, button3, button4);
+            CenterControlHorizontally(label1);
+            CenterControlHorizontally(label3);
+            Theme.Apply(this);
             RoundButton(button1, 25);
             RoundButton(button2, 25);
             RoundButton(button3, 25);
@@ -173,30 +187,6 @@ namespace WinFormsApp1
             home.Show();
             this.Hide();
         }
-        private void UpdateRoundedCorners()
-        {
-            int radius = 25;
-
-            using (GraphicsPath path = new GraphicsPath())
-            {
-                path.StartFigure();
-
-                path.AddArc(0, 0, radius, radius, 180, 90);
-                path.AddArc(Width - radius, 0, radius, radius, 270, 90);
-                path.AddArc(Width - radius, Height - radius, radius, radius, 0, 90);
-                path.AddArc(0, Height - radius, radius, radius, 90, 90);
-
-                path.CloseFigure();
-
-                Region = new Region(path);
-            }
-        }
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            UpdateRoundedCorners();
-        }
-
     }
 
 }

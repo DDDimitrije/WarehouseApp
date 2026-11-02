@@ -34,10 +34,10 @@
             label2 = new Label();
             label3 = new Label();
             label6 = new Label();
-            BillTb = new RichTextBox();
-            ProductTb = new RichTextBox();
-            PriceTb = new RichTextBox();
-            QuantityTb = new RichTextBox();
+            BillTb = new TextBox();
+            ProductTb = new TextBox();
+            PriceTb = new TextBox();
+            QuantityTb = new TextBox();
             label5 = new Label();
             label7 = new Label();
             label8 = new Label();
@@ -56,7 +56,7 @@
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             printPreviewDialog1 = new PrintPreviewDialog();
             button5 = new Button();
-            ClientNameTb = new RichTextBox();
+            ClientNameTb = new TextBox();
             label10 = new Label();
             panel1 = new Panel();
             SellamtLbl = new Label();
@@ -138,6 +138,7 @@
             // 
             BillTb.BackColor = SystemColors.ScrollBar;
             BillTb.Location = new Point(139, 179);
+            BillTb.Multiline = false;
             BillTb.Name = "BillTb";
             BillTb.Size = new Size(100, 28);
             BillTb.TabIndex = 27;
@@ -148,6 +149,7 @@
             // 
             ProductTb.BackColor = SystemColors.ScrollBar;
             ProductTb.Location = new Point(139, 227);
+            ProductTb.Multiline = false;
             ProductTb.Name = "ProductTb";
             ProductTb.Size = new Size(100, 28);
             ProductTb.TabIndex = 28;
@@ -158,6 +160,7 @@
             // 
             PriceTb.BackColor = SystemColors.ScrollBar;
             PriceTb.Location = new Point(139, 275);
+            PriceTb.Multiline = false;
             PriceTb.Name = "PriceTb";
             PriceTb.Size = new Size(100, 28);
             PriceTb.TabIndex = 29;
@@ -168,6 +171,7 @@
             // 
             QuantityTb.BackColor = SystemColors.ScrollBar;
             QuantityTb.Location = new Point(139, 323);
+            QuantityTb.Multiline = false;
             QuantityTb.Name = "QuantityTb";
             QuantityTb.Size = new Size(100, 28);
             QuantityTb.TabIndex = 30;
@@ -384,6 +388,7 @@
             // 
             ClientNameTb.BackColor = SystemColors.ScrollBar;
             ClientNameTb.Location = new Point(139, 131);
+            ClientNameTb.Multiline = false;
             ClientNameTb.Name = "ClientNameTb";
             ClientNameTb.Size = new Size(100, 28);
             ClientNameTb.TabIndex = 46;
@@ -466,7 +471,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LemonChiffon;
-            ClientSize = new Size(1093, 718);
+            ClientSize = new Size(1280, 720);
             Controls.Add(label13);
             Controls.Add(panel1);
             Controls.Add(ClientNameTb);
@@ -522,10 +527,10 @@
         private Label label2;
         private Label label3;
         private Label label6;
-        private RichTextBox BillTb;
-        private RichTextBox ProductTb;
-        private RichTextBox PriceTb;
-        private RichTextBox QuantityTb;
+        private TextBox BillTb;
+        private TextBox ProductTb;
+        private TextBox PriceTb;
+        private TextBox QuantityTb;
         private Label label5;
         private Label label7;
         private Label label8;
@@ -544,7 +549,7 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private PrintPreviewDialog printPreviewDialog1;
         private Button button5;
-        private RichTextBox ClientNameTb;
+        private TextBox ClientNameTb;
         private Label label10;
         private Panel panel1;
         private Label label11;

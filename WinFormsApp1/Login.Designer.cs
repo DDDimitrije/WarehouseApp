@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            UidTb = new RichTextBox();
-            PassTb = new RichTextBox();
+            UidTb = new TextBox();
+            PassTb = new TextBox();
             button1 = new Button();
             label2 = new Label();
             label3 = new Label();
@@ -67,6 +67,7 @@
             // 
             UidTb.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             UidTb.Location = new Point(198, 213);
+            UidTb.Multiline = false;
             UidTb.Name = "UidTb";
             UidTb.Size = new Size(307, 33);
             UidTb.TabIndex = 5;
@@ -77,10 +78,12 @@
             // 
             PassTb.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             PassTb.Location = new Point(198, 306);
+            PassTb.Multiline = false;
             PassTb.Name = "PassTb";
             PassTb.Size = new Size(307, 33);
             PassTb.TabIndex = 6;
             PassTb.Text = "";
+            PassTb.UseSystemPasswordChar = true;
             // 
             // button1
             // 
@@ -140,7 +143,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(541, 629);
+            ClientSize = new Size(1280, 720);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -153,6 +156,7 @@
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            Load += Login_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -162,8 +166,8 @@
 
         private Label label1;
         private PictureBox pictureBox1;
-        private RichTextBox UidTb;
-        private RichTextBox PassTb;
+        private TextBox UidTb;
+        private TextBox PassTb;
         private Button button1;
         private Label label2;
         private Label label3;

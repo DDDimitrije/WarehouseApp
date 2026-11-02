@@ -197,15 +197,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LemonChiffon;
-            ClientSize = new Size(1032, 652);
+            ClientSize = new Size(1280, 720);
             Controls.Add(tableLayoutPanel3);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
-            MaximumSize = new Size(1800, 1000);
             MinimizeBox = false;
-            MinimumSize = new Size(900, 550);
+            MinimumSize = new Size(900, 680);
             Name = "Home";
             Padding = new Padding(10);
             StartPosition = FormStartPosition.CenterScreen;
